@@ -55,7 +55,7 @@ for (let i = 0; i < post.length; i++) {
             <div class="post__header">
                 <div class="post-meta">                    
                     <div class="post-meta__icon">
-                        ${facebook === null ? '' : getElementFb(facebook, name)}                    
+                        ${facebook === null ? splitName(name) : getElementFb(facebook, name)}                    
                     </div>
                     <div class="post-meta__data">
                         <div class="post-meta__author">${name}</div>
@@ -129,6 +129,9 @@ function splitDate (dateNum) {
     return splittedResult
 }
 
-function splitName (nameNotSplitted) {
-    nameNotSplitted = text.split('');
+function splitName(nameNotSplitted) {
+    const splittedName = nameNotSplitted.split (" ");
+    const splittedLetters = splittedName[0][0] + splittedName[1][0];
+    return `<span class="profile-pic-default ">${splittedLetters}</span>`
 }
+
