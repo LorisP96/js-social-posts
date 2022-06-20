@@ -1,17 +1,3 @@
-// Milestone 1 - Creiamo il nostro array di oggetti che 
-// rappresentano ciascun post.
-// Ogni post dovrà avere le informazioni necessarie per 
-// stampare la relativa card:
-// - id del post, numero progressivo da 1 a n
-// - nome autore,
-// - foto autore,
-// - data in formato americano (mm-gg-yyyy),
-// - testo del post,
-// - immagine (non tutti i post devono avere una immagine),
-// - numero di likes.
-
-// MILESTONE 1
-
 let post = [
     {
         id: 1,
@@ -59,10 +45,7 @@ let post = [
     }
 ]
 
-// OK console.log(post)
-
 let postCont = document.getElementById('container');
-// OK console.log(postCont)
 
 for (let i = 0; i < post.length; i++) {
     const thisPost = post[i];
@@ -100,6 +83,20 @@ for (let i = 0; i < post.length; i++) {
         </div>
     `
     postCont.innerHTML += postTemplate;
+}
+
+const likeBtn = document.querySelectorAll('.like-button');
+
+for(let i = 0; i < likeBtn.length; i++) {
+
+    const thisLikeBtn = likeBtn[i];
+
+    thisLikeBtn.addEventListener('click',
+        function (event) {
+            event.preventDefault();
+            thisLikeBtn.classList.toggle('like-button--liked');
+        }
+    )
 }
 
 // creo funzione in caso non abbia la foto del profilo
