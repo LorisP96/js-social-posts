@@ -85,16 +85,32 @@ for (let i = 0; i < post.length; i++) {
     postCont.innerHTML += postTemplate;
 }
 
+// prendo tutti i bottoni e tutti i like
 const likeBtn = document.querySelectorAll('.like-button');
 
+const likeCounter = document.querySelectorAll('.js-likes-counter');
+
+// ciclo for per poter lavorare singolarmente
 for(let i = 0; i < likeBtn.length; i++) {
 
     const thisLikeBtn = likeBtn[i];
 
+    let likeNum = parseInt(likeCounter[i].innerHTML);
+
+    // al click evidenzio se il post piace o no
     thisLikeBtn.addEventListener('click',
         function (event) {
             event.preventDefault();
+
             thisLikeBtn.classList.toggle('like-button--liked');
+
+            // se contiene la classe click aggiungo 1 like altrimenti sottraggo
+            if (!thisLikeBtn.classList.contains('like-button--liked')) {
+                likeNum--;
+            } else {
+                likeNum++
+            }
+            likeCounter[i].innerHTML = likeNum;
         }
     )
 }
