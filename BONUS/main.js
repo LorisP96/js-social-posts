@@ -49,23 +49,23 @@ let postCont = document.getElementById('container');
 
 for (let i = 0; i < post.length; i++) {
     const thisPost = post[i];
-    
+    const {name, facebook, photo, date, likes} = thisPost;
     const postTemplate = `
         <div class="post">
             <div class="post__header">
                 <div class="post-meta">                    
                     <div class="post-meta__icon">
-                        ${thisPost.facebook === null ? '' : getElementFb(thisPost.facebook, thisPost.name)}                    
+                        ${facebook === null ? '' : getElementFb(facebook, name)}                    
                     </div>
                     <div class="post-meta__data">
-                        <div class="post-meta__author">${thisPost.name}</div>
-                        <div class="post-meta__time">${thisPost.date}</div>
+                        <div class="post-meta__author">${name}</div>
+                        <div class="post-meta__time">${splitDate(date)}</div>
                     </div>                    
                 </div>
             </div>
             <div class="post__text">Placeat libero ipsa nobis ipsum quibusdam quas harum ut. Distinctio minima iusto. Ad ad maiores et sint voluptate recusandae architecto. Et nihil ullam aut alias.</div>
             <div class="post__image">
-                <img src="${thisPost.photo}" alt="">
+                <img src="${photo}" alt="">
             </div>
             <div class="post__footer">
                 <div class="likes js-likes">
@@ -76,7 +76,7 @@ for (let i = 0; i < post.length; i++) {
                         </a>
                     </div>
                     <div class="likes__counter">
-                        Piace a <b id="like-counter-1" class="js-likes-counter">${thisPost.likes}</b> persone
+                        Piace a <b id="like-counter-1" class="js-likes-counter">${likes}</b> persone
                     </div>
                 </div> 
             </div>            
@@ -121,4 +121,14 @@ function getElementFb(elementFb, elementName) {
     return `
     <img class="profile-pic" src="${elementFb}" alt="${elementName}">
     `
+}
+
+function splitDate (dateNum) {
+    const dateSplitted = dateNum.split('/');
+    const splittedResult = dateSplitted[1] + '/' + dateSplitted[0] + '/' + dateSplitted[2]; 
+    return splittedResult
+}
+
+function splitName (nameNotSplitted) {
+    nameNotSplitted = text.split('');
 }
