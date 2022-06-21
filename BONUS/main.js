@@ -49,7 +49,7 @@ let postCont = document.getElementById('container');
 
 for (let i = 0; i < post.length; i++) {
     const thisPost = post[i];
-    const {name, facebook, photo, date, likes} = thisPost;
+    const {id, name, facebook, photo, date, likes} = thisPost;
     const postTemplate = `
         <div class="post">
             <div class="post__header">
@@ -70,13 +70,13 @@ for (let i = 0; i < post.length; i++) {
             <div class="post__footer">
                 <div class="likes js-likes">
                     <div class="likes__cta">
-                        <a class="like-button  js-like-button" href="#" data-postid="1">
+                        <a class="like-button  js-like-button" href="#" data-postid="${id}">
                             <i class="like-button__icon fas fa-thumbs-up" aria-hidden="true"></i>
                             <span class="like-button__label">Mi Piace</span>
                         </a>
                     </div>
                     <div class="likes__counter">
-                        Piace a <b id="like-counter-1" class="js-likes-counter">${likes}</b> persone
+                        Piace a <b id="like-counter-${id}" class="js-likes-counter">${likes}</b> persone
                     </div>
                 </div> 
             </div>            
@@ -115,7 +115,9 @@ for(let i = 0; i < likeBtn.length; i++) {
     )
 }
 
-// creo funzione in caso non abbia la foto del profilo
+// ---------------------------------------------------------------------------------
+//////////////////////////functions/////////////////////////////////////////////////
+// ---------------------------------------------------------------------------------
 
 function getElementFb(elementFb, elementName) {
     return `
